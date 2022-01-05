@@ -10,10 +10,12 @@ on:
     branches: [ main1 ]
     paths:
       - 'content/**'
+      - 'static/images/**'
   pull_request:
     branches: [ main1 ]
     paths:
       - 'content/**'
+      - 'static/images/**'
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -40,6 +42,18 @@ jobs:
         personal_token: ${{ secrets.REPO_TOKEN }}
         src_path: ./content/.
         dst_path: /content/aspose/com/
+        dst_owner: Aspose
+        dst_repo_name: websites-theme
+        dst_branch: main
+        src_branch: main
+        clean: true
+        
+    - name: Copy websites.aspose.com Images
+      uses: andstor/copycat-action@v3
+      with:
+        personal_token: ${{ secrets.REPO_TOKEN }}
+        src_path: ./static/images/.
+        dst_path: /static/images/aspose/com/
         dst_owner: Aspose
         dst_repo_name: websites-theme
         dst_branch: main
