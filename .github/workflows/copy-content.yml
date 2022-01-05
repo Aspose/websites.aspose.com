@@ -36,19 +36,6 @@ jobs:
       with:
           fetch-depth: 0    # Fetch all history for .GitInfo and .Lastmod
 
-    
-    - name: Copy websites.aspose.com Images
-      uses: andstor/copycat-action@v3
-      with:
-        personal_token: ${{ secrets.REPO_TOKEN }}
-        src_path: ./static/images/.
-        dst_path: /static/images/aspose/com/images/
-        dst_owner: Aspose
-        dst_repo_name: websites-theme
-        dst_branch: main
-        src_branch: main
-        clean: true
-        
     - name: Copy websites.aspose.com Content
       uses: andstor/copycat-action@v3
       with:
@@ -60,4 +47,21 @@ jobs:
         dst_branch: main
         src_branch: main
         clean: true
-        
+
+    # Step 2 - Checks-out your repository under $GITHUB_WORKSPACE
+    - name: Checkout
+      uses: actions/checkout@v2
+      with:
+          fetch-depth: 0    # Fetch all history for .GitInfo and .Lastmod   
+
+    - name: Copy websites.aspose.com Images
+      uses: andstor/copycat-action@v3
+      with:
+        personal_token: ${{ secrets.REPO_TOKEN }}
+        src_path: ./static/images/.
+        dst_path: /static/images/aspose/com/images/
+        dst_owner: Aspose
+        dst_repo_name: websites-theme
+        dst_branch: main
+        src_branch: main
+        clean: true
