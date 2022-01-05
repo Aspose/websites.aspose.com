@@ -1,6 +1,6 @@
 # This workflow copy content modified in the main branch to production branch.
 
-name: CopyWebsitesAspose-ComContent
+name: Copy-websites.aspose.com-Content
 
 # Controls when the action will run. 
 on:
@@ -34,7 +34,7 @@ jobs:
       with:
           fetch-depth: 0    # Fetch all history for .GitInfo and .Lastmod
 
-    - name: Copy about.aspose.app Content
+    - name: Copy websites.aspose.com Content
       uses: andstor/copycat-action@v3
       with:
         personal_token: ${{ secrets.REPO_TOKEN }}
